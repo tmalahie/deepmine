@@ -1,4 +1,5 @@
-This project is a minecraft bot that uses OpenAI to generate code based on chat commands and interpret them.
+This project is a minecraft bot that uses OpenAI to interpret chat commands by generating code and executing it.<br />
+The bot itself is based on MineFlayer: https://github.com/PrismarineJS/mineflayer
 
 # Usage
 
@@ -17,5 +18,5 @@ Finally, run the bot!
 npm run main
 ```
 
-The bot uses the file `training.js` as a training set to infer code from commands.
+The bot uses the file `training.js` as a training set to infer code from commands.<br />
 The more you add examples in this file, the smarter will it be!
