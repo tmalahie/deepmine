@@ -1,0 +1,23 @@
+{
+  "name": "deepmine",
+  "version": "1.0.0",
+  "description": "Bot that can play minecraft on command",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "minecraft",
+    "bot",
+    "OpenAI",
+    "chat",
+    "command"
+  ],
+  "author": "tmalahie",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "dotenv": "^11.0.0",
+    "mineflayer": "^3.14.1"
+  }
+}
