@@ -15,7 +15,7 @@ npm install
 Finally, run the bot!
 
 ```
-npm run main
+node main.js
 ```
 
 The bot uses the file `training.js` as a training set to infer code from commands.<br />
