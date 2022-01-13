@@ -30,7 +30,7 @@ def command_to_code(command):
   # If not, ask OpenAI to generate a code
   command_token = "<command>"
   placeholder_token = "/* placeholder */"
-  break_code = "      break;"
+  break_code = "\n      break;"
   code_start_index = training_code.find(placeholder_token)
   code_start = training_code[0:code_start_index]
   code_start = code_start.replace(command_token, command)
