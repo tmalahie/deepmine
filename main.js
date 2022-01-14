@@ -2,6 +2,14 @@ const mineflayer = require("mineflayer");
 const { spawnSync } = require("child_process");
 require("dotenv").config();
 
+const model = process.argv[2] ?? "codex";
+if (!["codex", "finetuned"].includes(model)) {
+  console.error(`Invalid model: ${model}`);
+  process.exit(1);
+}
+
+console.log(`Using model ${model}`);
+
 const bot = mineflayer.createBot({
   host: process.env.MINECRAFT_HOST,
   username: process.env.MINECRAFT_USERNAME,
@@ -22,7 +30,7 @@ bot.on("chat", (username, message) => {
 function handleMessage(message) {
   try {
     console.log("Command", message);
-    const interpretedCmd = spawnSync("python3", ["main.py", message]);
+    const interpretedCmd = spawnSync("python3", [`${model}.py`, message]);
     const code = interpretedCmd.stdout.toString();
     console.log("Code", code);
 

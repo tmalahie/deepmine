@@ -5,16 +5,14 @@ import openai
 import re
 from dotenv import load_dotenv
 
+from train import read_file
+
 load_dotenv()
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 
 if len(sys.argv) < 2:
   print("Usage: python3 main.py <command>")
   sys.exit(1)
-
-def read_file(file_name):
-  with open(file_name, "r") as f:
-    return f.read()
 
 def command_to_code(command):
   command = command.lower().strip()
