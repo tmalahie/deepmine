@@ -1,6 +1,7 @@
 .env
 .vscode
 node_modules
+__pycache__
 model.json
 training.json
 training.jsonl

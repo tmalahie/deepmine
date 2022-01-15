@@ -44,7 +44,7 @@ def command_to_code(command):
     top_p=1,
     frequency_penalty=0,
     presence_penalty=0,
-    stop=["\n\n###\n\n"]
+    stop=[code_suffix[1:]]
   )
   prediction = response["choices"][0]["text"]
   return prediction[len(code_prefix):]

@@ -13,8 +13,8 @@ def write_file(file_name, content):
   with open(file_name, "w") as f:
     f.write(content)
 
-code_prefix = " "
-code_suffix = "\n\n###\n\n"
+code_prefix = "\n"
+code_suffix = "\nprocess.exit(0);"
 
 if __name__ == "__main__":
   load_dotenv()
