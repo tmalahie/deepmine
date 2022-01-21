@@ -1,4 +1,5 @@
 const mineflayer = require("mineflayer");
+const move = require("mineflayer-move");
 const { spawnSync } = require("child_process");
 require("dotenv").config();
 
@@ -16,6 +17,7 @@ const bot = mineflayer.createBot({
   password: process.env.MINECRAFT_PASSWORD,
   port: process.env.MINECRAFT_PORT,
 });
+move(bot);
 
 // Log errors and kick reasons:
 bot.on("kicked", console.log);
@@ -24,12 +26,16 @@ bot.on("error", console.log);
 bot.on("chat", (username, message) => {
   if (username === bot.username) return;
   message = message.toLowerCase();
-  handleMessage(message);
+  handleMessage(username, message);
 });
 
-function handleMessage(message) {
+function handleMessage(username, message) {
   try {
     console.log("Command", message);
+    if (message.endsWith("]")) {
+      console.log("Minecraft command, skip");
+      return;
+    }
     const interpretedCmd = spawnSync("python3", [`${model}.py`, message]);
     const code = interpretedCmd.stdout.toString();
     console.log("Code", code);

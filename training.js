@@ -1,4 +1,5 @@
 const mineflayer = require("mineflayer");
+const move = require("mineflayer-move");
 require("dotenv").config();
 
 const bot = mineflayer.createBot({
@@ -8,6 +9,9 @@ const bot = mineflayer.createBot({
   port: process.env.MINECRAFT_PORT,
 });
 
+// Initialize modules
+move(bot);
+
 // Log errors and kick reasons:
 bot.on("kicked", console.log);
 bot.on("error", console.log);
@@ -15,10 +19,10 @@ bot.on("error", console.log);
 bot.on("chat", (username, message) => {
   if (username === bot.username) return;
   message = message.toLowerCase();
-  handleMessage(message);
+  handleMessage(username, message);
 });
 
-function handleMessage(message) {
+function handleMessage(username, message) {
   switch (message) {
     case "move forward":
     case "go forward":
@@ -91,6 +95,13 @@ function handleMessage(message) {
       break;
     case "move vehicle right":
       bot.moveVehicle(-1.0, 0.0);
+      break;
+    case "move vehicle right":
+      bot.moveVehicle(-1.0, 0.0);
+      break;
+    case "come":
+    case "come to me":
+      bot.move.to(bot.players[username].entity.position);
       break;
     case "<command>":
       /* placeholder */
